@@ -1,7 +1,9 @@
 pub mod asset_loader;
 pub mod asteroids;
 pub mod camera;
+pub mod collision_detection;
 pub mod debug;
+pub mod despawn;
 pub mod movement;
 pub mod spaceship;
 
@@ -9,7 +11,9 @@ use asset_loader::AssetLoaderPlugin;
 use asteroids::AsteroidsPlugin;
 use bevy::prelude::*;
 use camera::CameraPlugin;
+use collision_detection::CollisionDetectionPlugin;
 use debug::DebugPlugin;
+use despawn::DespawnPlugin;
 use movement::MovementPlugin;
 use spaceship::SpaceshipPlugin;
 
@@ -24,10 +28,12 @@ fn main() {
         .add_plugins(DefaultPlugins)
         // User configured plugins.
         .add_plugins(AssetLoaderPlugin)
+        .add_plugins(CollisionDetectionPlugin)
         .add_plugins(CameraPlugin)
         .add_plugins(MovementPlugin)
         .add_plugins(SpaceshipPlugin)
         .add_plugins(AsteroidsPlugin)
         .add_plugins(DebugPlugin)
+        .add_plugins(DespawnPlugin)
         .run();
 }
